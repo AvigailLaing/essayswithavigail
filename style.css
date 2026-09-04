@@ -873,16 +873,6 @@ blockquote { quotes: none; }
   line-height: 1.8;
   color: var(--ink-3);
 }
-.offers-cat {
-  margin: 56px 0 6px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid var(--ink);
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
 .offer-row { margin-top: 22px; position: relative; }
 .offer-card-wrap { border: 1px solid var(--hair); padding: 40px 42px 44px; background: var(--paper); }
 .offer-featured .offer-card-wrap, .featured-card { border-color: var(--ink); }
@@ -1023,7 +1013,7 @@ blockquote { quotes: none; }
   .press-card { padding: 22px 20px; }
   .letters-grid { grid-template-columns: 1fr; gap: 30px; }
   .photo-strip { grid-template-columns: 1fr; gap: 26px; }
-  .photo-strip img, .photo-strip .ps-tall img { height: 260px; }
+  .photo-strip img, .photo-strip .ps-tall img { height: auto; object-fit: contain; }
   .sb-top { flex-direction: column; gap: 4px; align-items: flex-start; }
   .acc-logo { width: 38px; height: 34px; }
   .session-row { gap: 14px; }
