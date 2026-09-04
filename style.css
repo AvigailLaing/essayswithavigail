@@ -634,29 +634,29 @@ blockquote { quotes: none; }
 /* ============================================================
    THE YES PILE SYSTEM
    ============================================================ */
-.yespile-section { background: var(--band); color: var(--paper); padding: 104px 0; }
-.yespile-section .section-label { color: var(--gold); }
-.yespile-section .section-h2 { color: var(--paper); }
+.yespile-section { background: var(--paper-2); color: var(--ink); padding: 104px 0; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+.yespile-section .section-label { color: var(--gold-deep); }
+.yespile-section .section-h2 { color: var(--ink); }
 .yp-lede {
   max-width: var(--measure);
   margin-top: 22px;
   font-size: 16.5px;
   line-height: 1.85;
-  color: rgba(255,255,255,0.66);
+  color: var(--ink-2);
 }
-.yp-stages { list-style: none; margin-top: 52px; border-top: 1px solid var(--hair-dark); }
+.yp-stages { list-style: none; margin-top: 52px; border-top: 1px solid var(--hair); }
 .yp-stage {
   display: grid;
   grid-template-columns: 92px 1fr;
   gap: 26px;
   padding: 30px 0;
-  border-bottom: 1px solid var(--hair-dark);
+  border-bottom: 1px solid var(--hair);
 }
 .yp-num {
   font-family: var(--font-display);
   font-size: 34px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--gold-deep);
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -664,7 +664,7 @@ blockquote { quotes: none; }
   font-family: var(--font-display);
   font-size: 25px;
   font-weight: 700;
-  color: var(--paper);
+  color: var(--ink);
   line-height: 1.2;
 }
 .yp-q {
@@ -672,13 +672,13 @@ blockquote { quotes: none; }
   font-family: var(--font-display);
   font-style: italic;
   font-size: 17px;
-  color: var(--gold);
+  color: var(--gold-deep);
 }
 .yp-desc {
   margin-top: 14px;
   font-size: 15px;
   line-height: 1.82;
-  color: rgba(255,255,255,0.62);
+  color: var(--ink-2);
   max-width: var(--measure);
 }
 .yp-sheet {
@@ -687,7 +687,7 @@ blockquote { quotes: none; }
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.42);
+  color: var(--ink-4);
 }
 .yp-promise { margin-top: 52px; padding-top: 34px; border-top: 2px solid var(--gold); }
 .yp-promise p {
@@ -695,14 +695,14 @@ blockquote { quotes: none; }
   font-size: clamp(23px, 3vw, 32px);
   font-weight: 700;
   line-height: 1.28;
-  color: var(--paper);
+  color: var(--ink);
   max-width: 24ch;
 }
-.yp-promise p em { font-style: italic; font-weight: 400; color: var(--gold); }
+.yp-promise p em { font-style: italic; font-weight: 400; color: var(--gold-deep); }
 .yp-promise span {
   display: block; margin-top: 18px;
   font-size: 14.5px; line-height: 1.8;
-  color: rgba(255,255,255,0.55);
+  color: var(--ink-3);
   max-width: var(--measure);
 }
 
@@ -718,6 +718,10 @@ blockquote { quotes: none; }
   color: var(--ink-2);
 }
 .pack-hero { margin-top: 44px; border: 1px solid var(--hair); }
+.pack-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 26px; }
+.pack-gallery figure { margin: 0; border: 1px solid var(--hair); }
+.pack-gallery img { width: 100%; height: auto; display: block; }
+.pack-contents-img { width: 100%; height: auto; display: block; margin-top: 20px; border: 1px solid var(--hair); }
 .pack-hero img { width: 100%; height: auto; display: block; }
 .pack-body {
   display: grid;
@@ -965,6 +969,7 @@ blockquote { quotes: none; }
   .yp-stage { grid-template-columns: 1fr; gap: 10px; }
   .yespile-section, .results-teaser, .endorse-section, .pack-section { padding: 68px 0; }
   .pack-body { grid-template-columns: 1fr; gap: 34px; }
+  .pack-gallery { grid-template-columns: 1fr; }
   .pack-buy { position: static; padding: 24px 20px 28px; }
   .page-head { padding: 110px 0 54px; }
   .logo-row li { padding: 22px 16px; min-height: 104px; }
