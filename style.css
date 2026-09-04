@@ -225,16 +225,6 @@ blockquote { quotes: none; }
   position: relative;
   border-right: 1px solid var(--hair);
 }
-.mq-logo {
-  height: 34px;
-  max-width: 150px;
-  width: auto;
-  object-fit: contain;
-  object-position: left center;
-  display: block;
-  margin-bottom: 4px;
-}
-.mq-logo-none { height: 34px; margin-bottom: 4px; display: block; }
 .mq-school {
   font-family: var(--font-display);
   font-size: 20px;
