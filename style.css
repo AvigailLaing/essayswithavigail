@@ -1508,7 +1508,7 @@ blockquote { quotes: none; }
 }
 .offer-featured .offer-card-wrap::before,
 .chooser-grid .choice:first-child::before,
-.pack-try::before { background: var(--ink); }
+.pack-try::before, .ws:first-child::before { background: var(--gold-deep); }
 
 .chooser-grid .choice:first-child .choice-n,
 .chooser-grid .choice:first-child .choice-price { color: rgba(16,16,16,0.66); }
@@ -1522,7 +1522,7 @@ blockquote { quotes: none; }
 .offer-featured .offer-payment-plan { color: rgba(16,16,16,0.74); }
 .offer-featured .offer-head { border-bottom-color: rgba(16,16,16,0.22); }
 .offer-featured .offer-tag-premium, .offer-featured .offer-badge {
-  background: var(--ink); color: var(--paper);
+  background: var(--gold-deep); color: var(--paper);
 }
 
 .pack-try-label { color: rgba(16,16,16,0.62); }
@@ -1571,7 +1571,7 @@ blockquote { quotes: none; }
 .offer-featured .offer-card-wrap .offer-includes li { color: rgba(16,16,16,0.8); }
 .offer-featured .offer-card-wrap .btn-offer,
 .offer-featured .offer-card-wrap .btn-offer-gold {
-  background: var(--ink); color: var(--paper); border-color: var(--ink);
+  background: var(--gold-deep); color: var(--paper); border-color: var(--gold-deep);
 }
 .offer-featured .offer-card-wrap .btn-offer:hover,
 .offer-featured .offer-card-wrap .btn-offer-gold:hover { color: var(--gold); }
@@ -1588,7 +1588,6 @@ blockquote { quotes: none; }
   background: var(--gold-fill);
   border-color: transparent;
 }
-.ws:first-child::before { background: var(--ink); }
 .ws:first-child .ws-n { color: var(--ink); }
 .ws:first-child .ws-l { color: rgba(16,16,16,0.68); }
 .ws:first-child .ws-note { color: rgba(16,16,16,0.8); }
