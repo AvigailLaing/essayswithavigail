@@ -361,9 +361,11 @@ blockquote { quotes: none; }
 .awards-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 4px;
 }
-.awards-grid figure { margin: 0; border: 1px solid var(--hair); background: var(--paper); }
+.awards-grid figure { margin: 0; }
+.awards-grid img { border: 1px solid var(--hair); background: var(--paper); }
+.awards-grid figcaption { margin-top: 11px; font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-4); line-height: 1.6; }
 .awards-grid img { width: 100%; height: auto; display: block; }
-.press-shot { margin: 20px 0 0; border: 1px solid var(--hair); background: var(--paper); }
+.press-shot { margin: 20px 0 0; max-width: 460px; border: 1px solid var(--hair); background: var(--paper); }
 .press-shot img { width: 100%; height: auto; display: block; }
 
 
@@ -664,6 +666,16 @@ blockquote { quotes: none; }
   font-size: 10px; font-weight: 600; letter-spacing: 0.24em;
   text-transform: uppercase; color: var(--ink-4);
 }
+.home-vt { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin: 40px 0 34px; }
+.hvt { margin: 0; }
+.hvt video { width: 100%; height: auto; display: block; background: var(--band); border: 1px solid var(--hair); }
+.hvt figcaption { margin-top: 12px; font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+
+.home-quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--hair); border: 1px solid var(--hair); margin-bottom: 40px; }
+.hq { margin: 0; background: var(--paper); padding: 26px 28px 28px; }
+.hq blockquote { font-family: var(--font-display); font-size: 18px; line-height: 1.5; color: var(--ink); }
+.hq figcaption { margin-top: 14px; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); }
+
 .teaser-cta { text-align: center; }
 
 /* ============================================================
@@ -1065,6 +1077,8 @@ blockquote { quotes: none; }
   .results-gallery, .endorse-gallery { columns: 1; }
   .logo-row { grid-template-columns: repeat(2, 1fr); }
   .teaser-stats { flex-direction: column; }
+  .home-vt, .home-quotes { grid-template-columns: 1fr; }
+  .awards-grid.awards-grid-3 { grid-template-columns: 1fr; }
   .ts + .ts { border-left: none; border-top: 1px solid var(--hair); padding-left: 0; }
   .yp-stage { grid-template-columns: 1fr; gap: 10px; }
   .yespile-section, .results-teaser, .endorse-section, .pack-section { padding: 68px 0; }
