@@ -635,7 +635,7 @@ blockquote { quotes: none; }
   border: 1px solid var(--hair);
   background: var(--paper);
 }
-.rcard img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+.rcard img { width: auto; max-width: 100%; margin: 0 auto; height: auto; display: block; cursor: zoom-in; }
 
 .rcard img:hover, .ecard img:hover { filter: brightness(0.97); }
 .ecard img { cursor: zoom-in; }
@@ -949,7 +949,7 @@ blockquote { quotes: none; }
   border: 1px solid var(--hair);
   background: var(--paper);
 }
-.ecard img { width: 100%; height: auto; display: block; }
+.ecard img { width: auto; max-width: 100%; margin: 0 auto; height: auto; display: block; }
 
 /* ============================================================
    OFFERS
@@ -1539,7 +1539,9 @@ blockquote { quotes: none; }
   max-height: 230px;
 }
 .qcard .qc-shot img {
-  width: 100%; margin: 0; height: auto; display: block;
+  /* width: auto means a screenshot narrower than the card renders at its own
+     size, centered, instead of being stretched into a blur */
+  width: auto; max-width: 100%; margin: 0 auto; height: auto; display: block;
   border: 0; cursor: zoom-in;
   transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
 }
