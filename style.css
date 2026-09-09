@@ -861,20 +861,15 @@ blockquote { quotes: none; }
 .ecard img { width: 100%; height: auto; display: block; }
 
 /* ============================================================
-   CTA BREAK
-   ============================================================ */
-.cta-break { background: var(--paper-2); padding: 92px 40px; text-align: center; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
-.cta-break-inner { max-width: 660px; margin: 0 auto; }
-.cta-break-text { font-family: var(--font-display); font-size: clamp(25px, 3.3vw, 36px); font-weight: 700; line-height: 1.25; text-wrap: balance; }
-.cta-break-sub { margin: 20px 0 36px; font-size: 15.5px; line-height: 1.8; color: var(--ink-2); }
-
-/* ============================================================
    OFFERS
    ============================================================ */
 .offers-section { background: var(--paper); padding: 104px 0; }
 .offers-sub { max-width: var(--measure); margin-top: 24px; font-size: 16px; line-height: 1.8; color: var(--ink-2); }
 
-.chooser { margin-top: 44px; }
+.chooser-section { background: var(--paper-2); padding: 96px 0; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+.chooser-section .choice { background: var(--paper); }
+.chooser-section .choice:hover { background: var(--paper-2); }
+.chooser { margin-top: 36px; }
 .chooser-q {
   font-family: var(--font-display);
   font-size: clamp(20px, 2.4vw, 26px);
