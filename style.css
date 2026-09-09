@@ -7,7 +7,7 @@
 :root {
   /* ground */
   --paper:      #ffffff;
-  --paper-2:    #faf9f5;   /* warm off-white for alternating bands */
+  --paper-2:    #ffffff;   /* no tint: sections separate with rules, not fills */
   --band:       #101010;   /* the one inverted section */
 
   /* ink */
@@ -164,7 +164,7 @@ blockquote { quotes: none; }
 }
 .hero-grain { display: none; }
 .hero-inner { max-width: var(--page); margin: 0 auto; padding: 0 40px; }
-.hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: center; }
+.hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 62px; align-items: center; padding-right: 16px; }
 .hero-photo { margin: 0; }
 .hero-photo img {
   width: 100%; height: auto; display: block;
@@ -217,7 +217,7 @@ blockquote { quotes: none; }
 /* ============================================================
    MARQUEE
    ============================================================ */
-.marquee-section { background: var(--paper-2); padding: 44px 0 48px; border-bottom: 1px solid var(--hair); overflow: hidden; }
+.marquee-section { background: var(--paper-2); padding: 44px 0 48px; border-bottom: 1px solid var(--hair); overflow: hidden; border-top: 1px solid var(--hair); }
 .marquee-label {
   text-align: center; margin-bottom: 22px;
   font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
@@ -270,7 +270,7 @@ blockquote { quotes: none; }
 /* ============================================================
    INTRO VIDEO
    ============================================================ */
-.intro-video-section { background: var(--paper-2); padding: 96px 0; border-bottom: 1px solid var(--hair); }
+.intro-video-section { background: var(--paper-2); padding: 96px 0; border-bottom: 1px solid var(--hair); border-top: 1px solid var(--hair); }
 .video-wrap {
   max-width: 900px;
   margin: 40px auto 0;
@@ -336,7 +336,7 @@ blockquote { quotes: none; }
 .photo-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: 34px;
   margin-top: 56px;
 }
 .photo-strip figure { margin: 0; }
@@ -359,7 +359,7 @@ blockquote { quotes: none; }
 
 /* ---------- school card with logo ---------- */
 .awards-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 4px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 4px;
 }
 .awards-grid figure { margin: 0; }
 .awards-grid img { border: 1px solid var(--hair); background: var(--paper); }
@@ -417,7 +417,7 @@ blockquote { quotes: none; }
 .letters-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 38px;
 }
 .letter { margin: 0; }
 .letter img {
@@ -757,7 +757,7 @@ blockquote { quotes: none; }
 /* ============================================================
    DOCUMENT PACK
    ============================================================ */
-.pack-section { background: var(--paper); padding: 104px 0; }
+.pack-section { background: var(--paper); padding: 104px 0; border-top: 1px solid var(--hair); }
 .pack-lede {
   max-width: var(--measure);
   margin-top: 22px;
@@ -1253,3 +1253,85 @@ blockquote { quotes: none; }
 .lb-close:hover { color: var(--paper); }
 .lb-close:focus-visible { outline: 2px solid var(--gold); }
 @media (max-width: 768px) { .lb { padding: 20px 12px; } }
+
+
+/* ============================================================
+   MOTION + FRAMING
+   ============================================================ */
+
+/* reveal: quicker in, a touch of scale, eased so it arrives rather than drifts */
+.fade-in {
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+  transition: opacity 0.55s cubic-bezier(.2,.7,.2,1),
+              transform 0.55s cubic-bezier(.2,.7,.2,1);
+}
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* buttons: the gold sweeps across instead of just swapping colour */
+.btn-gold, .btn-offer, .btn-offer-gold, .btn-offer-navy,
+.btn-ghost, .btn-ghost-navy, .btn-offer-ghost {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: color 0.28s cubic-bezier(.2,.7,.2,1),
+              border-color 0.28s ease,
+              transform 0.22s cubic-bezier(.2,.7,.2,1);
+}
+.btn-gold::after, .btn-offer::after, .btn-offer-gold::after, .btn-offer-navy::after,
+.btn-ghost-navy::after, .btn-offer-ghost::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: var(--ink);
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform 0.34s cubic-bezier(.2,.7,.2,1);
+}
+.btn-gold:hover::after, .btn-offer:hover::after, .btn-offer-gold:hover::after,
+.btn-offer-navy:hover::after, .btn-ghost-navy:hover::after, .btn-offer-ghost:hover::after {
+  transform: scaleX(1);
+}
+.btn-gold:hover, .btn-offer:hover, .btn-offer-gold:hover, .btn-offer-navy:hover,
+.btn-ghost-navy:hover, .btn-offer-ghost:hover { color: var(--paper); transform: translateY(-2px); }
+
+/* nav links get a rule that draws in from the left */
+.nav-links a:not(.nav-cta) { position: relative; }
+.nav-links a:not(.nav-cta)::after {
+  content: ""; position: absolute; left: 0; bottom: -5px; height: 1px; width: 100%;
+  background: var(--gold-deep); transform: scaleX(0); transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(.2,.7,.2,1);
+}
+.nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
+
+/* framing: an offset gold rule that hugs the picture, not the caption */
+.hero-photo img, .photo-strip figure img, .letter img, .awards-grid img,
+.vt video, .hvt video, .pack-gallery img, .call video {
+  box-shadow: 14px 14px 0 0 var(--paper), 14px 14px 0 1.5px var(--gold);
+  transition: box-shadow 0.32s cubic-bezier(.2,.7,.2,1), transform 0.28s cubic-bezier(.2,.7,.2,1);
+  position: relative; z-index: 1; background: var(--paper);
+}
+.hero-photo:hover img, .photo-strip figure:hover img, .letter:hover img,
+.awards-grid figure:hover img, .vt:hover video, .hvt:hover video,
+.pack-gallery figure:hover img, .call:hover video {
+  box-shadow: 8px 8px 0 0 var(--paper), 8px 8px 0 1.5px var(--gold-deep);
+  transform: translate(2px, 2px);
+}
+
+/* letters and screenshots lift a little more definitely */
+.letter img, .qcard, .call, .ecard, .rcard {
+  transition: transform 0.28s cubic-bezier(.2,.7,.2,1), box-shadow 0.28s ease;
+}
+.qcard:hover, .ecard:hover, .rcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px rgba(16,16,16,0.09);
+}
+
+/* the school rows wake up as you pass them */
+.acc-row { transition: background 0.25s ease; }
+.acc-row:hover { background: #fbfbfb; }
+.acc-logo { transition: transform 0.3s cubic-bezier(.2,.7,.2,1); }
+.acc-row:hover .acc-logo { transform: scale(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1 !important; transform: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
