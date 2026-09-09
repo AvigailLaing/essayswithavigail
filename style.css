@@ -576,8 +576,8 @@ blockquote { quotes: none; }
 
 /* ---------- results gallery ---------- */
 .results-gallery {
-  columns: 3;
-  column-gap: 26px;
+  columns: 2;
+  column-gap: 30px;
 }
 .rcard {
   break-inside: avoid;
@@ -585,7 +585,10 @@ blockquote { quotes: none; }
   border: 1px solid var(--hair);
   background: var(--paper);
 }
-.rcard img { width: 100%; height: auto; display: block; }
+.rcard img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+.rcard, .ecard { position: relative; }
+.rcard img:hover, .ecard img:hover { filter: brightness(0.97); }
+.ecard img { cursor: zoom-in; }
 .rcard figcaption { padding: 14px 16px 16px; border-top: 1px solid var(--hair); }
 .rc-school {
   font-family: var(--font-body);
@@ -851,7 +854,7 @@ blockquote { quotes: none; }
   color: var(--ink-2);
 }
 .endorse-section { background: var(--paper-2); padding: 104px 0; border-top: 1px solid var(--hair); }
-.endorse-gallery { columns: 3; column-gap: 24px; margin-top: 44px; }
+.endorse-gallery { columns: 2; column-gap: 30px; margin-top: 44px; }
 .ecard {
   break-inside: avoid;
   margin: 0 0 24px;
@@ -1067,3 +1070,35 @@ blockquote { quotes: none; }
   .session-row { gap: 14px; }
   .session-num { min-width: 34px; }
 }
+
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.lb {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(16,16,16,0.93);
+  display: none; align-items: center; justify-content: center;
+  padding: 40px 28px;
+  cursor: zoom-out;
+}
+.lb[open], .lb.on { display: flex; }
+.lb img {
+  max-width: min(1100px, 100%);
+  max-height: 100%;
+  width: auto; height: auto;
+  object-fit: contain;
+  background: var(--paper);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+.lb-close {
+  position: absolute; top: 18px; right: 22px;
+  background: none; border: 0; cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.72);
+  padding: 10px 14px;
+}
+.lb-close:hover { color: var(--paper); }
+.lb-close:focus-visible { outline: 2px solid var(--gold); }
+@media (max-width: 768px) { .lb { padding: 20px 12px; } }

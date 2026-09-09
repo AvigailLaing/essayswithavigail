@@ -370,6 +370,11 @@
   </div>
 </section>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+  <button class="lb-close" id="lbClose" type="button">Close &times;</button>
+  <img id="lbImg" src="" alt=""/>
+</div>
+
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-name">Avigail Laing &middot; College Essay Coach</div>
@@ -387,6 +392,38 @@
   document.querySelectorAll('.rcard, .ecard, .review-card').forEach(el => {
     el.classList.add('fade-in'); observer.observe(el);
   });
+
+  // These are emails people are meant to read, so let them be read full size.
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbClose = document.getElementById('lbClose');
+  let lastFocus = null;
+
+  function openLb(img) {
+    lastFocus = document.activeElement;
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt || '';
+    lb.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+  function closeLb() {
+    lb.classList.remove('on');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.rcard img, .ecard img').forEach(img => {
+    img.addEventListener('click', () => openLb(img));
+    img.setAttribute('tabindex', '0');
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(img); }
+    });
+  });
+  lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
+  lbClose.addEventListener('click', closeLb);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('on')) closeLb(); });
 </script>
 </body>
 </html>
