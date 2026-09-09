@@ -722,11 +722,14 @@ blockquote { quotes: none; }
 .yp-stages { list-style: none; margin-top: 52px; border-top: 1px solid var(--hair); }
 .yp-stage {
   display: grid;
-  grid-template-columns: 92px 1fr;
+  grid-template-columns: 92px minmax(0, 1fr) 300px;
   gap: 26px;
   padding: 30px 0;
   border-bottom: 1px solid var(--hair);
+  align-items: start;
 }
+/* every stage keeps the same three columns so the text measure never jumps,
+   even on the one stage that has no clip */
 .yp-num {
   font-family: var(--font-display);
   font-size: 34px;
@@ -1125,7 +1128,8 @@ blockquote { quotes: none; }
   .home-vt, .home-quotes { grid-template-columns: 1fr; }
   .awards-grid.awards-grid-3 { grid-template-columns: 1fr; }
   .ts + .ts { border-left: none; border-top: 1px solid var(--hair); padding-left: 0; }
-  .yp-stage { grid-template-columns: 1fr; gap: 10px; }
+  .yp-stage { grid-template-columns: 1fr; gap: 14px; }
+  .yp-clip { max-width: 420px; }
   .yespile-section, .results-teaser, .endorse-section, .pack-section { padding: 68px 0; }
   .pack-body { grid-template-columns: 1fr; gap: 34px; }
   .pack-gallery { grid-template-columns: 1fr; }
@@ -1451,3 +1455,19 @@ blockquote { quotes: none; }
 @media (prefers-reduced-motion: reduce) {
   .is-counting { transform: none; }
 }
+
+/* proof for each stage: the moment on a real call where she teaches it */
+.yp-clip { margin: 0; grid-column: 3; grid-row: 1; }
+.yp-clip figcaption {
+  margin-top: 11px;
+  font-family: var(--font-quote);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+.yp-clip .v-frame { aspect-ratio: 16 / 9; }
+.yp-clip .v-play { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
+.yp-clip .v-play::before {
+  border-left-width: 13px; border-top-width: 8px; border-bottom-width: 8px;
+}
+@media (max-width: 980px) { .yp-clip { grid-column: 1; grid-row: auto; } }
