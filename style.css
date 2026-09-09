@@ -1,3 +1,14 @@
+/* Advercase, licensed from Indieground, self-hosted so headlines never flash
+   in a fallback. Body copy stays in Inter; Advercase is a display face. */
+@font-face { font-family: 'Advercase'; src: url('fonts/advercase-regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Advercase'; src: url('fonts/advercase-bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Advercase'; src: url('fonts/advercase-italic.woff2') format('woff2');
+  font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Advercase'; src: url('fonts/advercase-bolditalic.woff2') format('woff2');
+  font-weight: 700; font-style: italic; font-display: swap; }
+
 /* ============================================================
    ESSAYS WITH AVIGAIL
    Hybrid direction: bold serif headlines, uppercase sans labels,
@@ -25,7 +36,8 @@
   --hair:       #e6e5df;
   --hair-dark:  rgba(255,255,255,0.16);
 
-  --font-display: 'Libre Caslon Text', Georgia, 'Times New Roman', serif;
+  --font-display: 'Advercase', 'Helvetica Neue', Arial, sans-serif;
+  --font-quote: 'Libre Caslon Text', Georgia, 'Times New Roman', serif;
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
 
   --page: 1120px;
@@ -137,21 +149,38 @@ blockquote { quotes: none; }
 }
 .nav-logo {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 25px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  line-height: 1;
 }
-.nav-links { display: flex; align-items: center; gap: 34px; }
+.nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-links a {
   font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--ink-3); transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--ink); }
 .nav-cta {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
   color: var(--ink) !important;
-  border-bottom: 2px solid var(--gold);
-  padding-bottom: 3px;
+  background: var(--gold);
+  border: 1.5px solid var(--gold);
+  padding: 11px 22px;
+  margin-left: 6px;
+  line-height: 1;
+  transition: color 0.28s cubic-bezier(.2,.7,.2,1), border-color 0.28s ease, transform 0.22s cubic-bezier(.2,.7,.2,1);
 }
+.nav-cta::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: var(--ink);
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform 0.34s cubic-bezier(.2,.7,.2,1);
+}
+.nav-cta:hover { color: var(--paper) !important; border-color: var(--ink); transform: translateY(-1px); }
+.nav-cta:hover::after { transform: scaleX(1); }
 
 /* ============================================================
    HERO
@@ -275,7 +304,7 @@ blockquote { quotes: none; }
   max-width: 900px;
   margin: 40px auto 0;
   border: 1px solid var(--hair);
-  background: var(--band);
+  background: var(--paper);
   line-height: 0;
 }
 .intro-video { width: 100%; height: auto; display: block; }
@@ -336,20 +365,19 @@ blockquote { quotes: none; }
 .photo-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 34px;
+  gap: 24px;
   margin-top: 56px;
 }
 .photo-strip figure { margin: 0; }
 .photo-strip img {
   width: 100%;
-  height: 300px;
+  height: 320px;
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center 25%;
   border: 1px solid var(--hair);
 }
-.photo-strip .ps-tall img { height: 300px; object-position: center 18%; }
 .photo-strip figcaption {
-  margin-top: 11px;
+  margin-top: 13px;
   font-size: 12.5px;
   line-height: 1.6;
   color: var(--ink-3);
@@ -401,7 +429,7 @@ blockquote { quotes: none; }
 .sb-note { margin-top: 11px; font-size: 13px; color: var(--ink-3); line-height: 1.65; }
 .schol-hero .sb-amt { font-size: clamp(30px, 4vw, 44px); }
 .schol-hero .sb-track { height: 16px; }
-.schol-hero .sb-fill { background: var(--ink); }
+.schol-hero .sb-fill { background: var(--gold-deep); }
 .schol-hero .sb-name { color: var(--gold-deep); }
 
 .pres-medal {
@@ -516,11 +544,11 @@ blockquote { quotes: none; }
 .presidential-banner {
   display: flex; gap: 34px; align-items: center; justify-content: space-between;
   margin-top: 40px; padding: 36px 38px;
-  background: var(--band); color: var(--paper);
+  background: var(--gold); color: var(--ink);
 }
-.pres-star { color: var(--gold); font-size: 20px; line-height: 1.4; }
+.pres-star { color: var(--ink); font-size: 20px; line-height: 1.4; }
 .pres-title { font-family: var(--font-display); font-size: clamp(23px, 3vw, 32px); font-weight: 700; line-height: 1.2; }
-.pres-sub { margin-top: 9px; font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.66); max-width: var(--measure); }
+.pres-sub { margin-top: 9px; font-size: 14px; line-height: 1.75; color: rgba(16,16,16,0.72); max-width: var(--measure); }
 
 .proof-caption {
   margin: 44px 0 16px;
@@ -533,14 +561,14 @@ blockquote { quotes: none; }
 /* ============================================================
    PAIN  (the one inverted band)
    ============================================================ */
-.pain-section { background: var(--band); color: var(--paper); padding: 104px 0; }
-.pain-section .section-label { color: var(--gold); }
-.pain-section .section-h2 { color: var(--paper); }
-.pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 46px; border-top: 1px solid var(--hair-dark); }
-.pain-card { padding: 32px 34px 32px 0; border-bottom: 1px solid var(--hair-dark); }
-.pain-card:nth-child(even) { padding-left: 34px; border-left: 1px solid var(--hair-dark); }
-.pain-q { font-family: var(--font-display); font-size: 20px; font-weight: 700; font-style: italic; line-height: 1.4; color: var(--paper); }
-.pain-a { margin-top: 14px; font-size: 14.5px; line-height: 1.8; color: rgba(255,255,255,0.62); }
+.pain-section { background: var(--gold); color: var(--ink); padding: 104px 0; }
+.pain-section .section-label { color: rgba(16,16,16,0.62); }
+.pain-section .section-h2 { color: var(--ink); }
+.pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 46px; border-top: 1px solid rgba(16,16,16,0.22); }
+.pain-card { padding: 32px 34px 32px 0; border-bottom: 1px solid rgba(16,16,16,0.22); }
+.pain-card:nth-child(even) { padding-left: 34px; border-left: 1px solid rgba(16,16,16,0.22); }
+.pain-q { font-family: var(--font-display); font-size: 20px; font-weight: 700; font-style: italic; line-height: 1.4; color: var(--ink); }
+.pain-a { margin-top: 14px; font-size: 14.5px; line-height: 1.8; color: rgba(16,16,16,0.74); }
 
 /* ============================================================
    RESULTS
@@ -666,10 +694,9 @@ blockquote { quotes: none; }
   font-size: 10px; font-weight: 600; letter-spacing: 0.24em;
   text-transform: uppercase; color: var(--ink-4);
 }
-.home-vt { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin: 40px 0 34px; }
+.home-vt { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin: 40px 0 34px; align-items: start; }
 .hvt { margin: 0; }
-.hvt video { width: 100%; height: auto; display: block; background: var(--band); border: 1px solid var(--hair); }
-.hvt figcaption { margin-top: 12px; font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+.hvt figcaption { margin-top: 14px; font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
 
 .home-quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--hair); border: 1px solid var(--hair); margin-bottom: 40px; }
 .hq { margin: 0; background: var(--paper); padding: 26px 28px 28px; }
@@ -775,7 +802,7 @@ blockquote { quotes: none; }
   background: var(--paper-2);
   border: 1px solid var(--hair);
 }
-.pack-try-video { line-height: 0; background: var(--band); border: 1px solid var(--hair); }
+.pack-try-video { line-height: 0; background: var(--paper); border: 1px solid var(--hair); }
 .pack-try-video video { width: 100%; height: auto; display: block; }
 .pack-try-label {
   font-size: 10px; font-weight: 600; letter-spacing: 0.26em;
@@ -886,8 +913,7 @@ blockquote { quotes: none; }
 .video-testi-section { background: var(--paper); padding: 90px 0; border-top: 1px solid var(--hair); }
 .vt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; align-items: start; }
 .vt { margin: 0; }
-.vt video { width: 100%; height: auto; display: block; background: var(--band); border: 1px solid var(--hair); }
-.vt figcaption { margin-top: 13px; font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+.vt figcaption { margin-top: 14px; font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
 .vt-note { margin-top: 24px; font-size: 12.5px; color: var(--ink-4); font-family: var(--font-display); font-style: italic; }
 @media (max-width: 768px) { .vt-grid { grid-template-columns: 1fr; } .video-testi-section { padding: 60px 0; } }
 
@@ -898,17 +924,14 @@ blockquote { quotes: none; }
   margin: 0;
   background: var(--paper);
   border: 1px solid var(--hair);
-  padding: 14px 14px 16px;
-  transition: box-shadow 0.2s, transform 0.2s;
+  padding: 10px;
+  transition: box-shadow 0.28s ease, transform 0.28s cubic-bezier(.2,.7,.2,1);
 }
-.call:hover { box-shadow: 0 12px 30px rgba(0,0,0,0.09); transform: translateY(-2px); }
-.call video { width: 100%; height: auto; display: block; background: var(--band); }
-.call-tag {
-  display: block; margin-top: 12px;
-  font-size: 9.5px; font-weight: 600; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--ink-4);
+.call:hover { box-shadow: 0 14px 34px rgba(16,16,16,0.10); transform: translateY(-3px); }
+.call figcaption {
+  margin-top: 13px; padding: 0 2px;
+  font-family: var(--font-quote); font-size: 15.5px; line-height: 1.55; color: var(--ink);
 }
-.call figcaption { margin-top: 12px; font-family: var(--font-display); font-size: 15.5px; line-height: 1.5; color: var(--ink); }
 @media (max-width: 980px) { .calls-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) { .calls-grid { grid-template-columns: 1fr; } .calls-section { padding: 60px 0; } }
 
@@ -1054,21 +1077,21 @@ blockquote { quotes: none; }
 /* ============================================================
    FINAL CTA + FOOTER
    ============================================================ */
-.final-cta { background: var(--band); color: var(--paper); padding: 112px 40px; text-align: center; }
+.final-cta { background: var(--gold); color: var(--ink); padding: 112px 40px; text-align: center; }
 .final-cta-inner { max-width: 680px; margin: 0 auto; }
 .final-h2 { font-family: var(--font-display); font-size: clamp(29px, 4vw, 46px); font-weight: 700; line-height: 1.18; text-wrap: balance; }
-.final-h2 em { font-style: italic; font-weight: 400; color: var(--gold); }
-.final-p { margin: 24px 0 38px; font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.68); }
+.final-h2 em { font-style: italic; font-weight: 400; color: rgba(16,16,16,0.6); }
+.final-p { margin: 24px 0 38px; font-size: 16px; line-height: 1.85; color: rgba(16,16,16,0.74); }
 .final-social { margin-top: 30px; }
-.final-social a { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); transition: color 0.2s; }
-.final-social a:hover { color: var(--gold); }
+.final-social a { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(16,16,16,0.55); transition: color 0.2s; }
+.final-social a:hover { color: var(--ink); }
 
-.footer { background: var(--band); color: rgba(255,255,255,0.42); border-top: 1px solid var(--hair-dark); padding: 34px 40px; }
+.footer { background: var(--paper); color: var(--ink-4); border-top: 1px solid var(--hair); padding: 34px 40px; }
 .footer-inner { max-width: var(--page); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-.footer-name { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.42); }
+.footer-name { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-4); }
 .footer-links { display: flex; gap: 28px; }
-.footer-links a { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.42); transition: color 0.2s; }
-.footer-links a:hover { color: var(--gold); }
+.footer-links a { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-4); transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold-deep); }
 
 /* ============================================================
    RESPONSIVE
@@ -1294,7 +1317,7 @@ blockquote { quotes: none; }
 .btn-ghost-navy:hover, .btn-offer-ghost:hover { color: var(--paper); transform: translateY(-2px); }
 
 /* nav links get a rule that draws in from the left */
-.nav-links a:not(.nav-cta) { position: relative; }
+.nav-links a:not(.nav-cta) { position: relative; padding-bottom: 2px; }
 .nav-links a:not(.nav-cta)::after {
   content: ""; position: absolute; left: 0; bottom: -5px; height: 1px; width: 100%;
   background: var(--gold-deep); transform: scaleX(0); transform-origin: left center;
@@ -1302,18 +1325,17 @@ blockquote { quotes: none; }
 }
 .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
 
-/* framing: an offset gold rule that hugs the picture, not the caption */
+/* images sit clean: a hairline, and a quiet lift on hover. No decoration. */
 .hero-photo img, .photo-strip figure img, .letter img, .awards-grid img,
-.vt video, .hvt video, .pack-gallery img, .call video {
-  box-shadow: 14px 14px 0 0 var(--paper), 14px 14px 0 1.5px var(--gold);
-  transition: box-shadow 0.32s cubic-bezier(.2,.7,.2,1), transform 0.28s cubic-bezier(.2,.7,.2,1);
-  position: relative; z-index: 1; background: var(--paper);
+.pack-gallery img {
+  border: 1px solid var(--hair);
+  background: var(--paper);
+  transition: box-shadow 0.3s ease, transform 0.26s cubic-bezier(.2,.7,.2,1);
 }
 .hero-photo:hover img, .photo-strip figure:hover img, .letter:hover img,
-.awards-grid figure:hover img, .vt:hover video, .hvt:hover video,
-.pack-gallery figure:hover img, .call:hover video {
-  box-shadow: 8px 8px 0 0 var(--paper), 8px 8px 0 1.5px var(--gold-deep);
-  transform: translate(2px, 2px);
+.awards-grid figure:hover img, .pack-gallery figure:hover img {
+  box-shadow: 0 14px 34px rgba(16,16,16,0.10);
+  transform: translateY(-3px);
 }
 
 /* letters and screenshots lift a little more definitely */
@@ -1334,4 +1356,92 @@ blockquote { quotes: none; }
 @media (prefers-reduced-motion: reduce) {
   .fade-in { opacity: 1 !important; transform: none !important; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+
+/* ---------------------------------------------------------------- video
+   Every clip sits in the same 16:9 frame with one play button, so a row of
+   them lines up and no browser chrome shows until someone presses play. The
+   clip is contained rather than cropped, and its own poster, blurred, fills
+   whatever space is left over. JS builds the button and takes the native
+   controls off; with JS off the markup keeps its controls and still plays. */
+.v-frame {
+  position: relative; display: block; overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--paper);
+  border: 1px solid var(--hair);
+  isolation: isolate;
+}
+.v-frame .v-bg {                 /* the clip's own poster, blurred, behind it */
+  position: absolute; inset: -8%; z-index: 0;
+  background: var(--poster) center / cover no-repeat;
+  filter: blur(26px) saturate(0.7) brightness(0.42);
+  transform: scale(1.06);
+}
+.v-frame video {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; object-fit: contain;
+  display: block; background: transparent;
+  transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
+}
+.v-frame::after {                /* a soft scrim so the button always reads */
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(58% 58% at 50% 50%, rgba(16,16,16,0.34), rgba(16,16,16,0.04));
+  transition: opacity 0.45s ease;
+}
+.v-frame.is-playing::after { opacity: 0; }
+.v-play {
+  position: absolute; left: 50%; top: 50%; z-index: 3;
+  width: 60px; height: 60px; margin: -30px 0 0 -30px;
+  border: 0; padding: 0; border-radius: 50%; cursor: pointer;
+  background: rgba(255,255,255,0.94);
+  box-shadow: 0 8px 24px rgba(16,16,16,0.32);
+  display: grid; place-items: center;
+  transition: transform 0.34s cubic-bezier(.2,.7,.2,1),
+              background 0.3s ease, opacity 0.3s ease;
+}
+.v-play::before {
+  content: ""; width: 0; height: 0; margin-left: 5px;
+  border-left: 17px solid var(--ink);
+  border-top: 10.5px solid transparent;
+  border-bottom: 10.5px solid transparent;
+}
+.v-play:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.v-frame:hover .v-play { transform: scale(1.1); background: var(--gold); }
+.v-frame:hover video { transform: scale(1.03); }
+.v-frame.is-playing .v-play { opacity: 0; pointer-events: none; transform: scale(0.7); }
+.v-frame.is-playing video, .v-frame.is-playing:hover video { transform: none; }
+/* the call clips are cropped to their Zoom band, so they get its shape */
+.call .v-frame { aspect-ratio: 16 / 5; }
+.vt .v-frame, .hvt .v-frame { aspect-ratio: 2 / 1; }
+.call .v-play, .vt .v-play { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
+.call .v-play::before, .vt .v-play::before {
+  border-left-width: 15px; border-top-width: 9px; border-bottom-width: 9px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v-frame video, .v-play, .v-frame::after { transition: none; }
+  .v-frame:hover video { transform: none; }
+}
+
+/* Advercase is a display face. Anything you actually read a sentence of
+   stays in the serif. */
+.qc-quote, .hq blockquote, .vt figcaption, .hvt figcaption, .ecard blockquote,
+.review-text, .rc-note, .qc-note, .vt-note, .ws-note, .story-sub, .acc-more,
+.calls-lede, .pain-q {
+  font-family: var(--font-quote);
+}
+
+/* a figure counting up leans forward and goes gold, then settles back */
+.is-counting {
+  color: var(--gold-deep);
+  transform: scale(1.055);
+  display: inline-block;
+  transition: color 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.2,1);
+}
+.has-counted {
+  transition: color 0.55s ease 0.05s, transform 0.55s cubic-bezier(.2,.7,.2,1) 0.05s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-counting { transform: none; }
 }
