@@ -1438,7 +1438,9 @@ blockquote { quotes: none; }
   font-family: var(--font-quote);
 }
 
-/* a figure counting up leans forward and goes gold, then settles back */
+/* a figure counting up leans forward and shifts colour, then settles back.
+   On a gold card it flashes white, since gold on gold disappears. */
+.ws .is-counting { color: var(--paper); }
 .is-counting {
   color: var(--gold);
   transform: scale(1.055);
@@ -1566,13 +1568,13 @@ blockquote { quotes: none; }
    filled gold outright and the other two stay black on white. Any gold dark
    enough to read as text on white turns brown, so gold stays a fill here. */
 .ws {
-  border: 1px solid var(--hair);
+  background: var(--gold-fill);
+  border: 0;
   padding: 34px 30px 34px;
 }
-.ws:first-child {
-  background: var(--gold-fill);
-  border-color: transparent;
-}
-.ws:first-child .ws-n { color: var(--ink); }
-.ws:first-child .ws-l { color: rgba(16,16,16,0.68); }
-.ws:first-child .ws-note { color: rgba(16,16,16,0.8); }
+.ws .ws-l { color: rgba(16,16,16,0.68); }
+.ws .ws-note { color: rgba(16,16,16,0.82); }
+/* each card takes a slightly different slice of the gold so a row of three
+   reads as one run of metal rather than three identical swatches */
+.ws:nth-child(2) { background: linear-gradient(155deg, #dcc189 0%, #cfae70 55%, #c5a263 100%); }
+.ws:nth-child(3) { background: linear-gradient(155deg, #d6ba82 0%, #caa76a 55%, #bf9c5e 100%); }
