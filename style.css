@@ -675,6 +675,7 @@ blockquote { quotes: none; }
 .hq { margin: 0; background: var(--paper); padding: 26px 28px 28px; }
 .hq blockquote { font-family: var(--font-display); font-size: 18px; line-height: 1.5; color: var(--ink); }
 .hq figcaption { margin-top: 14px; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); }
+.hq img { width: calc(100% + 56px); margin: 20px -28px -28px; display: block; border-top: 1px solid var(--hair); }
 
 .teaser-cta { text-align: center; }
 
