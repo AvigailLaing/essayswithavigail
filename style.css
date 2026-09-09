@@ -1073,6 +1073,53 @@ blockquote { quotes: none; }
 
 
 /* ============================================================
+   QUOTE-FIRST RESULT CARDS
+   ============================================================ */
+.quote-gallery { columns: 2; column-gap: 30px; margin-top: 44px; }
+.qcard {
+  break-inside: avoid;
+  margin: 0 0 30px;
+  border: 1px solid var(--hair);
+  background: var(--paper);
+  padding: 30px 30px 0;
+}
+.qc-school {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-deep); line-height: 1.6;
+}
+.qc-quote {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.qc-note {
+  margin-top: 14px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-4);
+}
+.qcard img {
+  width: calc(100% + 60px);
+  margin: 26px -30px 0;
+  height: auto; display: block;
+  border-top: 1px solid var(--hair);
+  cursor: zoom-in;
+}
+.qcard img:hover { filter: brightness(0.97); }
+.more-head {
+  margin: 54px 0 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--ink);
+}
+.more-head + .results-gallery { margin-top: 30px; }
+@media (max-width: 768px) { .quote-gallery { columns: 1; } .qcard { padding: 24px 22px 0; } .qcard img { width: calc(100% + 44px); margin: 22px -22px 0; } .qc-quote { font-size: 18px; } }
+
+/* ============================================================
    LIGHTBOX
    ============================================================ */
 .lb {
