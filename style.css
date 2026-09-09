@@ -1414,7 +1414,13 @@ blockquote { quotes: none; }
 /* the call clips are cropped to their Zoom band, so they get its shape */
 .call .v-frame { aspect-ratio: 16 / 5; }
 .vt .v-frame, .hvt .v-frame { aspect-ratio: 2 / 1; }
+.video-wrap .v-frame { aspect-ratio: 1280 / 854; border: 0; }
+.pack-try-video .v-frame { aspect-ratio: 9 / 16; border: 0; }
 .call .v-play, .vt .v-play { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
+.video-wrap .v-play { width: 76px; height: 76px; margin: -38px 0 0 -38px; }
+.video-wrap .v-play::before {
+  border-left-width: 22px; border-top-width: 13px; border-bottom-width: 13px;
+}
 .call .v-play::before, .vt .v-play::before {
   border-left-width: 15px; border-top-width: 9px; border-bottom-width: 9px;
 }

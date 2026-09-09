@@ -557,7 +557,7 @@
 /* Wraps every clip in its framed player. Runs before paint, so the native
    controls are never the thing you see first. Only one clip plays at a time. */
 (function () {
-  var vids = document.querySelectorAll('.vt video, .hvt video, .call video');
+  var vids = document.querySelectorAll('.vt video, .hvt video, .call video, .video-wrap video, .pack-try-video video');
   Array.prototype.forEach.call(vids, function (v) {
     if (v.closest('.v-frame')) return;
 
