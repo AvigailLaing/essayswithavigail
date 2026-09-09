@@ -34,7 +34,7 @@
   /* cards get their depth from shadow and a gold edge, never from a tint */
   --lift-1: 0 1px 2px rgba(16,16,16,0.07), 0 10px 30px rgba(16,16,16,0.11);
   --lift-2: 0 3px 8px rgba(16,16,16,0.10), 0 26px 64px rgba(16,16,16,0.19);
-  --gold-fill: linear-gradient(158deg, #dcc189 0%, #cfae70 52%, #bf9c58 100%);
+  --gold-fill: linear-gradient(155deg, #e3cb99 0%, #d3b478 55%, #c9a868 100%);
   /* rules */
   --hair:       #e6e5df;
   --hair-dark:  rgba(255,255,255,0.16);
@@ -1440,7 +1440,7 @@ blockquote { quotes: none; }
 
 /* a figure counting up leans forward and goes gold, then settles back */
 .is-counting {
-  color: var(--gold-deep);
+  color: var(--gold);
   transform: scale(1.055);
   display: inline-block;
   transition: color 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.2,1);
@@ -1482,17 +1482,6 @@ blockquote { quotes: none; }
   box-shadow: var(--lift-1);
   transition: box-shadow 0.34s ease, transform 0.34s cubic-bezier(.2,.7,.2,1);
 }
-/* the gold edge, drawn rather than bordered so it can animate */
-.qcard::before, .choice::before, .offer-card-wrap::before,
-.review-card::before, .pack-try::before, .ws::before {
-  content: ""; position: absolute; left: 0; top: 0; right: 0; height: 3px;
-  background: var(--gold-fill);
-  transform: scaleX(0); transform-origin: left center;
-  transition: transform 0.42s cubic-bezier(.2,.7,.2,1);
-  z-index: 2;
-}
-.qcard:hover::before, .choice:hover::before, .offer-card-wrap:hover::before,
-.review-card:hover::before, .pack-try:hover::before, .ws:hover::before { transform: scaleX(1); }
 
 .qcard:hover, .choice:hover, .offer-card-wrap:hover,
 .rcard:hover, .ecard:hover, .review-card:hover, .call:hover, .ws:hover {
@@ -1506,9 +1495,6 @@ blockquote { quotes: none; }
   border-color: transparent;
   color: var(--ink);
 }
-.offer-featured .offer-card-wrap::before,
-.chooser-grid .choice:first-child::before,
-.pack-try::before, .ws:first-child::before { background: var(--gold-deep); }
 
 .chooser-grid .choice:first-child .choice-n,
 .chooser-grid .choice:first-child .choice-price { color: rgba(16,16,16,0.66); }
@@ -1576,14 +1562,13 @@ blockquote { quotes: none; }
 .offer-featured .offer-card-wrap .btn-offer:hover,
 .offer-featured .offer-card-wrap .btn-offer-gold:hover { color: var(--gold); }
 
-/* the money is the whole argument of this page, so these three carry more
-   weight than an ordinary card: a gold edge that is always on, and the
-   biggest figure filled outright */
+/* the money is the whole argument of this page, so the biggest figure is
+   filled gold outright and the other two stay black on white. Any gold dark
+   enough to read as text on white turns brown, so gold stays a fill here. */
 .ws {
   border: 1px solid var(--hair);
   padding: 34px 30px 34px;
 }
-.ws::before { transform: scaleX(1); height: 4px; }
 .ws:first-child {
   background: var(--gold-fill);
   border-color: transparent;
@@ -1591,4 +1576,3 @@ blockquote { quotes: none; }
 .ws:first-child .ws-n { color: var(--ink); }
 .ws:first-child .ws-l { color: rgba(16,16,16,0.68); }
 .ws:first-child .ws-note { color: rgba(16,16,16,0.8); }
-.ws:not(:first-child) .ws-n { color: var(--gold-deep); }
