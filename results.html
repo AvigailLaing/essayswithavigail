@@ -17,13 +17,17 @@
   <meta name="twitter:title" content="Results | Avigail Laing, College Essay Coach"/>
   <meta name="twitter:description" content="1:1 college essay coaching. 1,000+ students coached into Cornell, Penn, Vanderbilt, NYU, UCLA and more."/>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css?v=4c08d031"/>
+  <link rel="stylesheet" href="style.css?v=0fc9a03a"/>
 </head>
 <body>
 <nav class="nav nav-solid" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">Avigail Laing</a>
-    <div class="nav-links">
+    <button class="nav-burger" type="button" aria-label="Open menu"
+            aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="/#meet">Meet Me</a>
       <a href="/#story">My Story</a>
       <a href="/results" class="nav-here">Results</a>
@@ -596,6 +600,44 @@
       v.controls = false;
       v.load();                       // back to the poster
     });
+  });
+})();
+</script>
+<script>
+/* Mobile menu. Closes on a link, on the scrim, on Escape, and if the window
+   grows back to desktop while it is open. */
+(function () {
+  var btn = document.querySelector('.nav-burger');
+  var panel = document.getElementById('nav-links');
+  if (!btn || !panel) return;
+
+  var scrim = document.createElement('div');
+  scrim.className = 'nav-scrim';
+  document.body.appendChild(scrim);
+
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    panel.classList.toggle('is-open', open);
+    scrim.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-open', open);
+    if (open) {
+      var first = panel.querySelector('a');
+      if (first) first.focus({ preventScroll: true });
+    }
+  }
+  function close() {
+    if (btn.getAttribute('aria-expanded') === 'true') { setOpen(false); btn.focus(); }
+  }
+
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  scrim.addEventListener('click', close);
+  panel.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  window.matchMedia('(min-width: 769px)').addEventListener('change', function (e) {
+    if (e.matches) setOpen(false);
   });
 })();
 </script>
