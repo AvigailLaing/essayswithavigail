@@ -1113,7 +1113,6 @@ blockquote { quotes: none; }
 
 @media (max-width: 768px) {
   .container, .nav-inner, .hero-inner { padding: 0 22px; }
-  .nav-links { display: none; }
   .hero { padding: 132px 0 72px; }
   .hero-stats { flex-direction: column; }
   .hstat + .hstat, .hstat-div + .hstat { border-left: none; border-top: 1px solid var(--hair); padding-left: 0; }
@@ -1610,4 +1609,75 @@ img, video, svg { max-width: 100%; }
   .ecard:hover, .review-card:hover, .call:hover, .ws:hover {
     transform: none; box-shadow: var(--lift-1);
   }
+}
+
+/* ---------------------------------------------------------------- mobile nav
+   Three lines top right, opening a full-height panel. Desktop never sees the
+   button; the phone never sees the inline links. */
+.nav-burger { display: none; }
+
+@media (max-width: 768px) {
+  .nav-burger {
+    display: grid; place-content: center; gap: 5px;
+    width: 42px; height: 42px; margin-right: -9px;
+    padding: 0; border: 0; background: none; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-burger span {
+    display: block; width: 24px; height: 2px; background: var(--ink);
+    transition: transform 0.32s cubic-bezier(.2,.7,.2,1), opacity 0.2s ease;
+  }
+  .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-links {
+    position: fixed; inset: 0 0 0 auto;
+    width: min(78vw, 340px);
+    background: var(--paper);
+    border-left: 1px solid var(--hair);
+    box-shadow: -18px 0 48px rgba(16,16,16,0.16);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 96px 30px 40px;
+    transform: translateX(100%);
+    transition: transform 0.38s cubic-bezier(.2,.7,.2,1);
+    overflow-y: auto;
+    z-index: 120;
+  }
+  .nav-links.is-open { transform: translateX(0); }
+
+  .nav-links a {
+    font-family: var(--font-display);
+    font-size: 21px; font-weight: 700;
+    letter-spacing: 0; text-transform: none;
+    color: var(--ink);
+    padding: 18px 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .nav-links a.nav-here { color: var(--gold-deep); }
+  .nav-links a.nav-cta {
+    margin: 26px 0 0; border-bottom: 0;
+    text-align: center; text-transform: uppercase;
+    font-family: var(--font-body); font-size: 12px; letter-spacing: 0.18em;
+    padding: 17px 22px;
+  }
+
+  /* the sheet needs the bar above it, and the page behind it must not move */
+  .nav { z-index: 130; }
+  .nav-burger { position: relative; z-index: 140; }
+  body.nav-open { overflow: hidden; }
+  .nav-scrim {
+    position: fixed; inset: 0; z-index: 110;
+    background: rgba(16,16,16,0.42);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.34s ease;
+  }
+  .nav-scrim.is-open { opacity: 1; pointer-events: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links, .nav-burger span, .nav-scrim { transition: none; }
 }
