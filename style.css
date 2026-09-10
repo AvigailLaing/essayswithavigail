@@ -1136,6 +1136,15 @@ blockquote { quotes: none; }
   .page-head { padding: 110px 0 54px; }
   .logo-row li { padding: 22px 16px; min-height: 104px; }
   .logo-row img { max-height: 48px; }
+  /* the school rows kept a three column grid with a nowrap acceptance rate,
+     which pushed the whole document 160px wider than the phone */
+  .acc-row, .acc-row-hero {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0;
+  }
+  .acc-rate { white-space: normal; }
+  .acc-logo { width: 104px; height: 44px; }
   .acc-card:nth-child(even), .schol-card:nth-child(even) { padding-left: 0; border-left: none; }
   .pain-card, .pain-card:nth-child(even) { padding-left: 0; border-left: none; padding-right: 0; }
   .offer-card-wrap { padding: 30px 24px 34px; }
@@ -1442,8 +1451,10 @@ blockquote { quotes: none; }
    On a gold card it flashes white, since gold on gold disappears. */
 .ws .is-counting { color: var(--paper); }
 .is-counting {
-  color: var(--gold);
-  transform: scale(1.055);
+  /* no colour shift on a white ground: gold light enough to read as gold is
+     too light to read as a number. The lean forward carries it instead, and
+     figures sitting on gold flash white (see .ws below). */
+  transform: scale(1.06);
   display: inline-block;
   transition: color 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.2,1);
 }
@@ -1578,3 +1589,25 @@ blockquote { quotes: none; }
    reads as one run of metal rather than three identical swatches */
 .ws:nth-child(2) { background: linear-gradient(155deg, #dcc189 0%, #cfae70 55%, #c5a263 100%); }
 .ws:nth-child(3) { background: linear-gradient(155deg, #d6ba82 0%, #caa76a 55%, #bf9c5e 100%); }
+
+/* Nothing may make the page scroll sideways. A single element that overshoots
+   turns every vertical swipe on a phone into a diagonal one, which is what
+   made the site feel like it was fighting back. */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, video, svg { max-width: 100%; }
+
+/* ---------------------------------------------------------------- mobile
+   Scrolling a phone means repainting the whole screen every frame, so the
+   three expensive things go away at phone width: the blurred poster behind
+   each clip, the blur behind the sticky nav, and the marquee, which is
+   animating ten thousand pixels of text nobody can read at this size. */
+@media (max-width: 768px) {
+  .v-frame .v-bg { display: none; }
+  .nav-scrolled { backdrop-filter: none; background: var(--paper); }
+  .marquee-track { animation: none; width: 100%; flex-wrap: wrap; justify-content: center; }
+  .marquee-track > *:nth-child(n+9) { display: none; }
+  .qcard:hover, .choice:hover, .offer-card-wrap:hover, .rcard:hover,
+  .ecard:hover, .review-card:hover, .call:hover, .ws:hover {
+    transform: none; box-shadow: var(--lift-1);
+  }
+}
