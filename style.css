@@ -1210,7 +1210,7 @@ blockquote { quotes: none; }
 /* ============================================================
    QUOTE-FIRST RESULT CARDS
    ============================================================ */
-.quote-gallery { columns: 2; column-gap: 30px; margin-top: 44px; }
+.quote-gallery { columns: 1; margin-top: 44px; }
 .qcard {
   break-inside: avoid;
   margin: 0 0 30px;
@@ -1680,4 +1680,57 @@ img, video, svg { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .nav-links, .nav-burger span, .nav-scrim { transition: none; }
+}
+
+/* ---------------------------------------------------------------- proof cards
+   The email is the proof, so it leads each card at close to its real size and
+   is never clipped. The quote follows as a caption, smaller than the email. */
+.qcard { padding: 26px 30px 24px; }
+.qcard .qc-note { margin-top: 6px; }
+.qcard .qc-shot {
+  margin: 18px -30px 0;
+  max-height: none;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+.qcard .qc-shot::after { content: none; }
+.qcard .qc-quote {
+  margin-top: 18px;
+  font-size: 13px; line-height: 1.6; font-style: italic;
+  color: var(--ink-2);
+}
+
+/* the homepage teaser follows the same order */
+.home-quotes {
+  grid-template-columns: 1fr; gap: 26px;
+  background: none; border: 0;
+}
+.hq {
+  padding: 24px 28px 22px;
+  border: 1px solid var(--hair);
+  box-shadow: var(--lift-1);
+}
+.hq figcaption { margin-top: 0; }
+.hq .hq-shot {
+  margin: 16px -28px 0;
+  background: #f4f4f3;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+/* never wider than the capture itself: stretching a small phone screenshot
+   full-bleed is what made it blurry */
+.hq img, .hq .hq-shot img {
+  width: auto; max-width: 100%; margin: 0 auto; display: block; border: 0;
+}
+.hq blockquote {
+  margin-top: 16px;
+  font-size: 13px; line-height: 1.6; font-style: italic;
+  color: var(--ink-2);
+}
+
+@media (max-width: 768px) {
+  .qcard { padding: 22px 20px 20px; }
+  .qcard .qc-shot { margin: 16px -20px 0; }
+  .hq { padding: 22px 20px 20px; }
+  .hq .hq-shot { margin: 14px -20px 0; }
 }
