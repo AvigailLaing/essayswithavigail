@@ -1734,3 +1734,15 @@ img, video, svg { max-width: 100%; }
   .hq { padding: 22px 20px 20px; }
   .hq .hq-shot { margin: 14px -20px 0; }
 }
+
+/* an odd clip out in the two-column testimonial grid centres at the same half
+   width, rather than sitting alone on the left or stretching full width, which
+   would upscale a 960px clip into a blur */
+.vt-grid > .vt:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 14px);
+}
+@media (max-width: 768px) {
+  .vt-grid > .vt:last-child:nth-child(odd) { width: 100%; }
+}
