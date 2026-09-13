@@ -1746,3 +1746,14 @@ img, video, svg { max-width: 100%; }
 @media (max-width: 768px) {
   .vt-grid > .vt:last-child:nth-child(odd) { width: 100%; }
 }
+
+/* same rule for the homepage pair: an odd clip out centres at half width
+   rather than sitting alone on the left or stretching into a blur */
+.home-vt > .hvt:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 13px);
+}
+@media (max-width: 768px) {
+  .home-vt > .hvt:last-child:nth-child(odd) { width: 100%; }
+}
