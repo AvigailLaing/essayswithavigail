@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy &amp; Disclaimer | Avigail Laing, College Essay Coach</title>
+  <meta name="description" content="What this site collects (nothing through its own forms), where booking happens, and what the student results on this site do and don't promise."/>
+  <link rel="canonical" href="https://essayswithavigail.com/privacy"/>
+  <meta name="robots" content="index, follow"/>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css?v=060e8dc2"/>
+</head>
+<body>
+<nav class="nav nav-solid" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Avigail Laing</a>
+    <button class="nav-burger" type="button" aria-label="Open menu"
+            aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="/#meet">Meet Me</a>
+      <a href="/#story">My Story</a>
+      <a href="/results">Results</a>
+      <a href="/#offers">Coaching</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#offers" class="nav-cta">Book Now</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-head">
+  <div class="container">
+    <div class="section-label">The fine print</div>
+    <h1 class="page-h1">Privacy &amp; <em>disclaimer.</em></h1>
+    <p class="page-lede">The short version: this site doesn't track you, and nobody can promise you an admission, including me.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="legal">
+      <h2>What this site collects</h2>
+      <p>Nothing through its own pages. There are no forms here, no accounts, no cookies, and no analytics or advertising pixels, so this site doesn't keep a record of who visits or what you click.</p>
+      <p>A few outside services are involved just by loading the page, and each has its own privacy policy:</p>
+      <ul>
+        <li>The site is hosted on <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Pages</a>, which may log visitors' IP addresses for security.</li>
+        <li>The fonts load from <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Fonts</a>, which receives your IP address when your browser requests them.</li>
+        <li>Booking, payment and the free essay test all happen on <a href="https://stan.store/avigaillaing" target="_blank" rel="noopener">Stan</a>, not on this site. What you enter there is handled under Stan's privacy policy.</li>
+      </ul>
+      <p>If you email me, I use what you send to reply to you and to run your coaching, and I don't sell it or share it with anyone.</p>
+      <p>This site isn't directed at children under 13, and I don't knowingly collect information from them.</p>
+
+      <h2>Student results and testimonials</h2>
+      <p>The acceptances, scholarships and quotes on this site are what students and parents reported to me themselves, and the screenshots are the messages they came in. Names are blurred where a student asked.</p>
+      <p>Every student's result depends on their own writing, their whole application, and each school's decisions. Working with me doesn't guarantee admission to any school, any scholarship, or any other outcome, and the results shown aren't a promise of what yours will be.</p>
+
+      <h2>Universities, names and logos</h2>
+      <p>University names and logos appear only to show where students were admitted or where I studied and earned scholarships. I'm not affiliated with, sponsored by, or endorsed by any of these universities, and their names and logos belong to them.</p>
+
+      <h2>Questions</h2>
+      <p>Email me at <a href="mailto:avigaillaing@gmail.com">avigaillaing@gmail.com</a>.</p>
+
+      <p class="legal-updated">Last updated September 14, 2026.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-name">Avigail Laing &middot; College Essay Coach</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="https://stan.store/avigaillaing" target="_blank" rel="noopener">Stan Store</a>
+      <a href="/results">Results</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Mobile menu. Closes on a link, on the scrim, on Escape, and if the window
+   grows back to desktop while it is open. */
+(function () {
+  var btn = document.querySelector('.nav-burger');
+  var panel = document.getElementById('nav-links');
+  if (!btn || !panel) return;
+
+  var scrim = document.createElement('div');
+  scrim.className = 'nav-scrim';
+  document.body.appendChild(scrim);
+
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    panel.classList.toggle('is-open', open);
+    scrim.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-open', open);
+    if (open) {
+      var first = panel.querySelector('a');
+      if (first) first.focus({ preventScroll: true });
+    }
+  }
+  function close() {
+    if (btn.getAttribute('aria-expanded') === 'true') { setOpen(false); btn.focus(); }
+  }
+
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+  scrim.addEventListener('click', close);
+  panel.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  window.matchMedia('(min-width: 769px)').addEventListener('change', function (e) {
+    if (e.matches) setOpen(false);
+  });
+})();
+</script>
+</body>
+</html>
