@@ -1433,8 +1433,25 @@ blockquote { quotes: none; }
 /* the call clips are cropped to their Zoom band, so they get its shape */
 .call .v-frame { aspect-ratio: 16 / 5; }
 .vt .v-frame, .hvt .v-frame { aspect-ratio: 2 / 1; }
-.video-wrap .v-frame { aspect-ratio: 1280 / 854; border: 0; }
+.video-wrap .v-frame { aspect-ratio: 16 / 9; border: 0; }
 .pack-try-video .v-frame { aspect-ratio: 9 / 16; border: 0; }
+
+/* the product films that sit inside an offer card */
+.offer-video { margin-top: 30px; max-width: 560px; }
+.offer-video-label {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 12px;
+}
+.offer-video .v-frame { aspect-ratio: 16 / 9; }
+.offer-video .v-play { width: 56px; height: 56px; margin: -28px 0 0 -28px; }
+.offer-video .v-play::before {
+  border-left-width: 16px; border-top-width: 10px; border-bottom-width: 10px;
+}
 .call .v-play, .vt .v-play { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
 .video-wrap .v-play { width: 76px; height: 76px; margin: -38px 0 0 -38px; }
 .video-wrap .v-play::before {
@@ -1522,6 +1539,8 @@ blockquote { quotes: none; }
 .chooser-grid .choice:first-child .choice-n,
 .chooser-grid .choice:first-child .choice-price { color: rgba(16,16,16,0.66); }
 .chooser-grid .choice:first-child .choice-do { color: rgba(16,16,16,0.78); }
+/* gold-as-text fails on a gold ground, so the label goes dark on the filled card */
+.offer-featured .offer-video-label { color: rgba(16,16,16,0.72); }
 .chooser-grid .choice:first-child .choice-price { border-top-color: rgba(16,16,16,0.2); }
 .chooser-grid .choice:first-child:hover { background: var(--gold-fill); }
 .chooser-grid .choice:first-child:hover .choice-price { color: var(--ink); }
