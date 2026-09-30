@@ -1,10 +1,10 @@
 {
   "_comment": "Single source of truth for prices shown on the site. Edit here, then run: python3 sync-prices.py",
-  "_checked_against_stan": "2026-09-29",
+  "_checked_against_stan": "2026-09-30",
   "session": "$125",
   "essay30": "$399",
   "supplementals30": "$399",
-  "complete": "$799",
+  "complete": "$699",
   "pack": "$57",
   "hybrid": "$249",
   "oneEdit": "$75",
