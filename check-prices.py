@@ -24,8 +24,8 @@ PRODUCTS = {
     "session":         "1:1 Essay Strategy Session",
     "hybrid":          "One Call, Then Written Edits",
     "bothEdit":        "Common App + Supplementals Edited",
-    "essayEdit":       "Essay Edits, Back in 48 Hours",
-    "suppsEdit":       "Supplemental Edits, Back in 48 Hours",
+    "essayEdit":       "Essay Edits, Back in",
+    "suppsEdit":       "Supplemental Edits, Back in",
     "oneEdit":         "One-Time Essay Edit",
     "pack":            "The Full College Essay System",
 }
