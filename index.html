@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
   <link rel="manifest" href="/site.webmanifest"/>
   <meta name="theme-color" content="#ffffff"/>
-  <link rel="stylesheet" href="style.css?v=cf13ea00"/>
+  <link rel="stylesheet" href="style.css?v=72d28d3b"/>
 </head>
 <body>
 <nav class="nav" id="nav">
@@ -449,6 +449,20 @@
       <div class="ts"><span class="ts-n">4</span><span class="ts-l">Full rides this cycle</span></div>
       <div class="ts"><span class="ts-n">14</span><span class="ts-l">Written endorsements</span></div>
     </div>
+    <div class="vfeature">
+      <div class="vfeature-video">
+        <video controls playsinline preload="none" poster="media/testimonials/testimonial-18-poster.jpg" aria-label="A student who filmed and sent in her own recommendation">
+          <source src="media/testimonials/testimonial-18.mp4" type="video/mp4"/>
+          <track kind="captions" srclang="en" label="English" src="media/captions/testimonial-18.vtt" default/>
+        </video>
+      </div>
+      <div class="vfeature-text">
+        <div class="section-label">Sent in by a student</div>
+        <blockquote class="vfeature-quote">&ldquo;My essay went from a thousand words to 650 words in one session. She knows exactly what she&rsquo;s talking about.&rdquo;</blockquote>
+        <p class="vfeature-note">She filmed this herself after finishing her four sessions, and sent it in unprompted.</p>
+      </div>
+    </div>
+
     <div class="home-vt">
       <figure class="hvt">
         <video controls playsinline preload="none" poster="media/testimonials/testimonial-16-poster.jpg" aria-label="A student on what the sessions help with">
@@ -1417,7 +1431,7 @@
 /* Wraps every clip in its framed player. Runs before paint, so the native
    controls are never the thing you see first. Only one clip plays at a time. */
 (function () {
-  var vids = document.querySelectorAll('.vt video, .hvt video, .call video, .video-wrap video, .pack-try-video video, .yp-clip video, .offer-video video');
+  var vids = document.querySelectorAll('.vt video, .hvt video, .call video, .video-wrap video, .pack-try-video video, .yp-clip video, .offer-video video, .vfeature-video video');
   Array.prototype.forEach.call(vids, function (v) {
     if (v.closest('.v-frame')) return;
 

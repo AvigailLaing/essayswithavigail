@@ -1801,3 +1801,32 @@ img, video, svg { max-width: 100%; }
 .edit-proof { margin-top: 52px; }
 .edit-proof .quote-gallery { margin-top: 20px; }
 .edit-proof .qcard + .qcard { margin-top: 26px; }
+
+/* --------------------------------------------- the one filmed recommendation
+   A student shot this herself and sent it in, so it is portrait and her face
+   is the point of it. It gets its own block rather than the 2:1 clip grid. */
+.vfeature {
+  display: grid; grid-template-columns: 300px 1fr; gap: 40px;
+  align-items: center; margin-top: 44px;
+  padding-bottom: 44px; border-bottom: 1px solid var(--hair);
+}
+.vfeature .v-frame { aspect-ratio: 9 / 16; }
+.vfeature .v-play { width: 56px; height: 56px; margin: -28px 0 0 -28px; }
+.vfeature .v-play::before {
+  border-left-width: 16px; border-top-width: 10px; border-bottom-width: 10px;
+}
+.vfeature-quote {
+  font-family: var(--font-display); font-size: 26px; line-height: 1.38;
+  color: var(--ink); margin: 14px 0 0;
+}
+.vfeature-note {
+  margin-top: 18px; font-size: 15px; line-height: 1.75; color: var(--ink-2);
+  max-width: 46ch;
+}
+@media (max-width: 768px) {
+  .vfeature { grid-template-columns: 1fr; gap: 24px; }
+  /* width, not max-width: auto margins on a grid item shrink-wrap it, and
+     .v-frame has no intrinsic width, so max-width collapsed it to 0 */
+  .vfeature-video { width: min(280px, 100%); margin: 0 auto; }
+  .vfeature-quote { font-size: 22px; }
+}
